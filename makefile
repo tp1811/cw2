@@ -7,10 +7,10 @@ build/sox-14.4.1/configure : packages/sox-14.4.1.tar.gz
 	cd build && tar -xzf ../packages/sox-14.4.1.tar.gz
 	
 build/sox-14.4.1/Makefile : build/sox-14.4.1/configure
-	cd build/sox-14.4.1 && ./configure --prefix="$(pwd)/../../local"
+	cd build/sox-14.4.1 && ./configure --prefix="$(shell pwd)/local"
 	
 build/sox-14.4.1/src/sox : build/sox-14.4.1/Makefile
-	cd build/sox-14.4.1 && $(MAKE) -j 4
+	cd build/sox-14.4.1 && $(MAKE)
 	
 local/bin/sox : build/sox-14.4.1/src/sox
 	cd build/sox-14.4.1 && make install
@@ -22,10 +22,10 @@ build/lame-3.99.5/configure : packages/lame-3.99.5.tar.gz
 	cd build && tar -xzf ../packages/lame-3.99.5.tar.gz
 	
 build/lame-3.99.5/Makefile : build/lame-3.99.5/configure
-	cd build/lame-3.99.5 && ./configure --prefix="$(pwd)/../../local"
+	cd build/lame-3.99.5 && ./configure --prefix="$(shell pwd)/local"
 	
 build/lame-3.99.5/src/lame : build/lame-3.99.5/Makefile
-	cd build/lame-3.99.5 && $(MAKE) -j 4
+	cd build/lame-3.99.5 && $(MAKE)
 	
 local/bin/lame : build/lame-3.99.5/src/lame
 	cd build/lame-3.99.5 && make install
