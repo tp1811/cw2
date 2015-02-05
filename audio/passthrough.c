@@ -7,11 +7,17 @@
 
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[])	
 {	
 	while(1){
 		// Buffer containing one stereo sample sample (left and right, both 16 bit).
-		int16_t samples[2];
+		if (argc>1){
+			int16_t samples[*argv[0]];
+		}
+		//int16_t samples[2];
+		
+		int16_t samples[512];
+		
 		unsigned cbBuffer=sizeof(samples);	// size in bytes of  one stereo sample (4 bytes)
 		
 		// Read one sample from input
